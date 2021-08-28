@@ -52,9 +52,6 @@ footer {
     padding: 20px;
 }
     </style>
-    <!-- fazer um style em css e linkar aqui
-        fazer um script em js e linkar aqui
-    estilizar fonte assistindo a parte 2 do video -->
 </head>
 <body>
     <header>
@@ -71,7 +68,16 @@ footer {
     <div class="content">
         <div class="container">
           <?php
-            include('pages/home.php');
+
+            $page = "home";
+
+            if(isset($_GET['page'])){
+
+                if(file_exists("pages/".$_GET['page'].".php")){
+                    $page = $_GET['page'];
+                }
+            }
+            include("pages/$page.php");
          ?>
         </div>
     </div>
